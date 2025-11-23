@@ -24,15 +24,20 @@ namespace NexoWebApplication.Controllers
             var response = new
             {
                 data = clientes,
-                links = new[]
-                {
-                    new { rel = "self", href = Url.Action(nameof(GetAll), new { page, pageSize }) },
-                    new { rel = "next", href = Url.Action(nameof(GetAll), new { page = page + 1, pageSize }) },
-                    new { rel = "prev", href = Url.Action(nameof(GetAll), new { page = page > 1 ? page - 1 : 1, pageSize }) }
-                },
+                links = GetLinksForGetAll(page, pageSize),
                 totalCount
             };
             return Ok(response);
+        }
+
+        protected virtual object[] GetLinksForGetAll(int page, int pageSize)
+        {
+            return new[]
+            {
+                new { rel = "self", href = Url?.Action(nameof(GetAll), new { page, pageSize }) ?? string.Empty },
+                new { rel = "next", href = Url?.Action(nameof(GetAll), new { page = page + 1, pageSize }) ?? string.Empty },
+                new { rel = "prev", href = Url?.Action(nameof(GetAll), new { page = page > 1 ? page - 1 : 1, pageSize }) ?? string.Empty }
+            };
         }
 
         [HttpGet("{id}")]
@@ -44,13 +49,18 @@ namespace NexoWebApplication.Controllers
             var response = new
             {
                 data = cliente,
-                links = new[]
-                {
-                    new { rel = "self", href = Url.Action(nameof(GetById), new { id }) },
-                    new { rel = "all", href = Url.Action(nameof(GetAll)) }
-                }
+                links = GetLinksForGetById(id)
             };
             return Ok(response);
+        }
+
+        protected virtual object[] GetLinksForGetById(int id)
+        {
+            return new[]
+            {
+                new { rel = "self", href = Url?.Action(nameof(GetById), new { id }) ?? string.Empty },
+                new { rel = "all", href = Url?.Action(nameof(GetAll)) ?? string.Empty }
+            };
         }
 
         [HttpPut("{id}")]
