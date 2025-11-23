@@ -143,8 +143,20 @@ A aplicação está publicada em: [https://nexowebapplication.onrender.com](http
    ```
 4. Os resultados dos testes serão exibidos no terminal.
 
+## Como rodar localmente
+
+1. Instale o .NET SDK 8.0 ou superior.
+2. No terminal, navegue até a pasta do projeto.
+3. Execute:
+   ```sh
+   dotnet run --project NexoWebApplication/NexoWebApplication.csproj
+   ```
+4. Por padrão, a aplicação roda na porta **5236**.
+5. Acesse no navegador ou Postman:
+   - [http://localhost:5236/swagger/index.html]
+Se precisar alterar a porta, edite o arquivo `appsettings.json`.
+
 ## Observações adicionais
 - Todos os exemplos acima podem ser importados diretamente no Postman.
 - Certifique-se de obter o JWT antes de acessar endpoints protegidos.
 - O Dockerfile está pronto para deploy em ambientes como Render.
-- Para dúvidas ou problemas, consulte os comentários no código e o README original.
