@@ -156,6 +156,11 @@ A aplicação está publicada em: [https://nexowebapplication.onrender.com](http
    - [http://localhost:5236/swagger/index.html]
 Se precisar alterar a porta, edite o arquivo `appsettings.json`.
 
+## Integrantes
+- Eduarda Tiemi Akamini Machado — RM 554756
+- Felipe Pizzinato Bigatto — RM 555141
+- Gustavo de Oliveira Turci Sandrini — RM 557505
+
 ## Observações adicionais
 - Todos os exemplos acima podem ser importados diretamente no Postman.
 - Certifique-se de obter o JWT antes de acessar endpoints protegidos.
