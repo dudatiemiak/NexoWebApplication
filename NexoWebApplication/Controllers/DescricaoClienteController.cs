@@ -65,6 +65,8 @@ namespace NexoWebApplication.Controllers
         [Authorize]
         public async Task<IActionResult> Add([FromBody] DescricaoCliente model)
         {
+            // Ignora o objeto Cliente recebido e vincula apenas pelo ClienteId
+            model.Cliente = null;
             await _descricaoService.AddAsync(model);
             return CreatedAtAction(nameof(GetById), new { id = model.Id }, model);
         }
@@ -74,6 +76,7 @@ namespace NexoWebApplication.Controllers
         public async Task<IActionResult> Update(int id, [FromBody] DescricaoCliente model)
         {
             if (id != model.Id) return BadRequest();
+            model.Cliente = null;
             await _descricaoService.UpdateAsync(model);
             return NoContent();
         }

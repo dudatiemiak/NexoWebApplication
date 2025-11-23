@@ -1,8 +1,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using NexoWebApplication.Application.Services;
+using NexoWebApplication.Services;
 using NexoWebApplication.Domain.Entities;
 using NexoWebApplication.Application.Interfaces;
+using NexoWebApplication.Dtos;
 using System.Security.Claims;
 
 namespace NexoWebApplication.Controllers
@@ -22,12 +23,13 @@ namespace NexoWebApplication.Controllers
 
         [HttpPost("login")]
         [AllowAnonymous]
-        public async Task<IActionResult> Login([FromBody] Cliente model)
+        public async Task<IActionResult> Login([FromBody] LoginDto model)
         {
             var cliente = await _clienteService.GetByEmailAsync(model.Email);
             if (cliente != null && cliente.Senha == model.Senha)
             {
-                var token = _tokenService.GenerateToken(cliente.Email);
+                // Gera token JWT com claims relevantes
+                var token = _tokenService.GenerateToken(cliente.Id, cliente.Email);
                 return Ok(new { token });
             }
             return Unauthorized();

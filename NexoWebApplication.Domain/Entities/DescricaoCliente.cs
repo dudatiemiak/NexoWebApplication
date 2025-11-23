@@ -10,6 +10,6 @@ namespace NexoWebApplication.Domain.Entities
         public int Satisfacao { get; set; }
         public int AdocaoTecnologia { get; set; }
         public bool InteresseMudar { get; set; }
-        public Cliente Cliente { get; set; }
+        public Cliente? Cliente { get; set; }
     }
 }
