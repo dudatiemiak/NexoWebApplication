@@ -3,8 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using NexoWebApplication.Application;
 using NexoWebApplication.Infrastructure.Data;
 using NexoWebApplication.Infrastructure;
-using Microsoft.OpenApi.Models;
 using OpenTelemetry.Trace;
+using Microsoft.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
 

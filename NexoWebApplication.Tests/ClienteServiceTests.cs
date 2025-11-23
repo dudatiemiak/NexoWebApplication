@@ -3,8 +3,6 @@ using NexoWebApplication.Application.Services;
 using NexoWebApplication.Domain.Entities;
 using NexoWebApplication.Domain.Repositories;
 using Moq;
-using System.Threading.Tasks;
-using System.Collections.Generic;
 
 namespace NexoWebApplication.Tests
 {

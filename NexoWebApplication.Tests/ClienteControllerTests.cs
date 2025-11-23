@@ -4,8 +4,6 @@ using NexoWebApplication.Controllers;
 using NexoWebApplication.Application.Interfaces;
 using NexoWebApplication.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace NexoWebApplication.Tests
 {
