@@ -37,7 +37,6 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-// Add services to the container.
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
     options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
@@ -47,7 +46,6 @@ builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo { Title = "NexoWebApplication API", Version = "v1" });
 
-    // Adiciona esquema de segurança JWT
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Description = "JWT Authorization header usando o esquema Bearer.\r\n\r\nDigite 'Bearer' [espaço] e então seu token no campo abaixo.\r\nExemplo: 'Bearer 12345abcdef'",
@@ -95,7 +93,6 @@ builder.Services.AddOpenTelemetry().WithTracing(tracing =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -106,7 +103,6 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Health Check endpoint
 app.MapHealthChecks("/health");
 
 app.MapControllers();

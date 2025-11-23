@@ -15,7 +15,6 @@ namespace NexoWebApplication.Tests
 {
         public class ClienteControllerTests
         {
-            // Subclasse para testes que abstrai links
             private class TestClienteController : ClienteController
             {
                 public TestClienteController(Application.Interfaces.IClienteService service) : base(service) { }
@@ -131,7 +130,6 @@ namespace NexoWebApplication.Tests
             var service = new ClienteService(new Infrastructure.Repositories.ClienteRepository(dbContext));
             var controller = new TestClienteController(service);
 
-            // Detach tracked entity to avoid EF Core tracking conflict
             var tracked = dbContext.Clientes.Local.FirstOrDefault(c => c.Id == 1);
             if (tracked != null)
                 dbContext.Entry(tracked).State = EntityState.Detached;

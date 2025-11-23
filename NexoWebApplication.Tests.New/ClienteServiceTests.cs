@@ -11,19 +11,15 @@ namespace NexoWebApplication.Tests
         [Fact]
         public async Task GetByIdAsync_ReturnsCliente()
         {
-            // Arrange
 
-            // Implementação fake simples de IClienteRepository
             var fakeRepo = new FakeClienteRepository(new List<Cliente> {
                 new Cliente { Id = 1, Nome = "Teste", Email = "teste@teste.com", Senha = "123" }
             });
             var service = new ClienteService(fakeRepo);
 
-            // Act
 
             var result = await service.GetByIdAsync(1);
 
-            // Assert
             Assert.NotNull(result);
             Assert.Equal(1, result.Id);
             Assert.Equal("Teste", result.Nome);
@@ -32,7 +28,6 @@ namespace NexoWebApplication.Tests
         [Fact]
         public async Task GetAllAsync_ReturnsClientes()
         {
-            // Arrange
 
             var fakeRepo = new FakeClienteRepository(new List<Cliente> {
                 new Cliente { Id = 1, Nome = "Teste1", Email = "t1@teste.com", Senha = "123" },
@@ -40,16 +35,13 @@ namespace NexoWebApplication.Tests
             });
             var service = new ClienteService(fakeRepo);
 
-            // Act
 
             var result = await service.GetAllAsync(1, 10);
 
-            // Assert
             Assert.NotNull(result);
             Assert.Equal(2, ((List<Cliente>)result).Count);
     }
 
-    // Implementação fake de IClienteRepository para testes sem Moq
     public class FakeClienteRepository : IClienteRepository
     {
         private readonly List<Cliente> _clientes;
